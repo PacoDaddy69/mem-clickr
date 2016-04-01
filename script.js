@@ -1,55 +1,52 @@
-$(document).ready(function()	{
+$(document).ready(function() {
+
+	var clicks = 0;
+	var name;
+	var player;
+
+	var setup = function (player, other) {
+		fbRef.child(player + 'Clicks').on('value', function(snapshot) {
+				clicks = snapshot.val();
+				$('#clicks').text(clicks);
+			});
+			fbRef.child(other + 'Clicks').on('value', function(snapshot) {
+				clicks2 = snapshot.val();
+				$('#clicks2').text(clicks2);
+			});
+
+			$('#cookie').click(function() {
+				clicks = clicks + 1;
+				$('#clicks').text(clicks);
+				fbRef.child(player + 'Clicks').set(clicks);
+			});
+	}
 
 	console.log("Loaded");
+	$("#winner").hide();
+	$('.game').hide();
+	
 
-	var player1 = false;
-	
-	var player2 = false;
-	
-	var clicks1 = 0;
-	
-	var clicks2 = 0;
-	
 	var fbRef = new Firebase("https://burning-inferno-220.firebaseio.com/");
-	
-	$('#player1').click(function()	{
-		
-		player2 = false;
-		
-		player1 = true;
-		
-		$('#player2').hide();
-			
-		$('#doge').click(function()	{
-			
-			clicks1 = clicks1 + 1;
-			
-			fbRef.child('clicks1').set(clicks1);
-			
-			$('#clicks1').text(clicks1);
-			
-		});
-		
+
+	$('#player1').click(function() {
+		name = "Player 1";
+		$("#name").text(name);
+		player = "player1";
+		$('.buttons').hide();
+		$('.game').show();
+
+		setup(player, 'player2');
 	});
-	
-	$('#player2').click(function()	{
-		
-		player1 = false;
-		
-		player2 = true;
-		
-		$('#player1').hide();
-			
-		$('#doge').click(function()	{
-			
-			clicks2 = clicks2 + 1;
-			
-			fbRef.child('clicks2').set(clicks2);
-			
-			$('#clicks2').text(clicks2);
-			
-		});
-		
+
+	$('#player2').click(function() {
+		name = "Player 2";
+		$("#name").text(name);
+		player = "player2";
+		$('.buttons').hide();
+		$('.game').show();
+
+		setup(player, 'player1');
 	});
-		
-	});
+
+});
+

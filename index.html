@@ -1,31 +1,26 @@
 <!DOCTYPE html>
-
 <html>
-
 <head>
-
-	<title></title>
-
-	<link rel="stylesheet" href="styles.css">
-
+	<title>Meme Clicker</title>
+	<link rel="stylesheet" type="text/css" href="styles.css">
 </head>
-
 <body>
+	<div class="buttons">
+		<button id="player1">Player 1</button>
+		<button id="player2">Player 2</button>
+	</div>
+	<div class="game">
+		<h1>Hi <span id="name"></span></h1>
+		<h1>Click the doggo!</h1>
+		<img id="cookie" src="img/doge.jpg">
+		<h2>Your Score:</h2>
+		<h2 id="clicks">0</h2>
+		<h2>Other Player:</h2>
+		<h2 id="clicks2">0</h2>
+	</div>
 
-	<center><h1>MEME CLICKER</h1></center>
-
-	<center><h4>PLAYER 1 CLICKS: <span id="clicks1">0</span></h4><h4>PLAYER 2 CLICKS: <span id="clicks2">0</span></h4></center>
-
-	<center><img src="img/doge.jpg" id="doge"></center>
-
-	<center><button id="player1">PLAYER 1</button><button id="player2">PLAYER 2</button></center>
-
-	<script   src="https://code.jquery.com/jquery-1.12.2.js"   integrity="sha256-VUCyr0ZXB5VhBibo2DkTVhdspjmxUgxDGaLQx7qb7xY="   crossorigin="anonymous"></script>
-
+	<script   src="https://code.jquery.com/jquery-1.12.2.min.js"   integrity="sha256-lZFHibXzMHo3GGeehn1hudTAP3Sc0uKXBXAzHX1sjtk="   crossorigin="anonymous"></script>
+	<script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
 	<script src="script.js"></script>
-
-	<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
-
 </body>
-
 </html>
